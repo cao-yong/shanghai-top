@@ -2,10 +2,11 @@ let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
 let logger = require('morgan');
 
-let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
+let indexRouter = require('./routes/front/index');
+let usersRouter = require('./routes/front/users');
 
 let app = express();
 
@@ -14,8 +15,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb',extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -1,204 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
-	<title>Shanghai TOP10</title>
-	<link rel="stylesheet" href="/stylesheets/front/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title>Shanghai TOP10</title>
+    <link rel="stylesheet" href="/stylesheets/front/style.css">
 </head>
 <body>
 <header id="header">
-	<div class="center">
-		<h1 class="logo">Shanghai TOP10</h1>
-		<nav class="link">
-			<h2 class="none">website navigate</h2>
-			<ul>
-				<li class="active" ><a href="/">景点</a></li>
-				<li><a href="/information">商圈<span class="xs-hidden"></span></a></li>
-				<li><a href="/ticket">小吃街<span class="xs-hidden"></span></a></li>
-				<li><a href="/scenery">酒店<span class="xs-hidden"></span></a></li>
-				<li><a href="/about"><span>夜店</span></a></li>
-			</ul>
-		</nav>
-	</div>
+    <div class="center">
+        <h1 class="logo">Shanghai TOP10</h1>
+        <nav class="link">
+            <h2 class="none">website navigate</h2>
+            <ul>
+                <li class="active"><a href="/">景点</a></li>
+                <li><a href="/information">商圈<span class="xs-hidden"></span></a></li>
+                <li><a href="/ticket">小吃街<span class="xs-hidden"></span></a></li>
+                <li><a href="/scenery">酒店<span class="xs-hidden"></span></a></li>
+                <li><a href="/about"><span>夜店</span></a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
- <!-- 搜索区 -->
-	<div id="adver">
-		<img src="/images/front/adver.jpg" alt="">
-		<!-- <div class="center"></div> -->
-		<div class="center copy">  <!-- 为了使input和button的大小也能自适应 -->
-			<input class="search" type="text" placeholder="搜索你感兴趣的内容" maxlength=15>
-		<button class="button">搜索</button>
-		</div>
-		
-	</div>
+<!-- 搜索区 -->
+<div id="adver">
+    <img src="/images/front/adver.jpg" alt="">
+    <!-- <div class="center"></div> -->
+    <div class="center copy">  <!-- 为了使input和button的大小也能自适应 -->
+        <input class="search" type="text" placeholder="搜索你感兴趣的内容" maxlength=15>
+        <button class="button">搜索</button>
+    </div>
+
+</div>
 
 <!-- 图文区 -->
-	<div id="tour">
-      <section class="center">
-    	<h2>Hot Tour Area</h2>
-    	<p>Domestic Tour  Oversea Tour  Self-service Tour  Self-driving Tour  Theme Tour and so on</p>
-      </section>
-		<figure>
-				<img src="/images/front/tour1.jpg" alt="tour1">
-				<figcaption>
-				<div class="tour_title">
-					<strong class="title">&lt;Bangkok&gt;</strong>Enjoy the discount if you join in a group
-                </div>
-		<div>
-			<em class="sat">CACSI 77%</em>
-			<span class="price">¥ <strong>2864</strong></span>
-		</div>
-		<div class="type">Domestic line</div>	
-		</figcaption>
-		</figure>
+<div id="tour">
+    <section class="center">
+        <h2>上海最受欢迎的景点</h2>
+        <p>
+            上海是最繁华的都市之一，也是将中西合并做到完美的一座城市，江南传统的吴越文化和西方传入的工业文化相融形成了上海特有的海派文化，这里有历史古迹，也有参天高楼，为您带来了上海必去景点，带您领略上海的独特风景。</p>
+    </section>
+    <% if(data) {
+    data.forEach(function (bean) { %>
+    <figure>
+        <img src="<%= bean.img_url %>" alt="tour1">
+        <figcaption>
+            <div class="tour_title">
+                <strong class="title">&lt;<%= bean.site_name %>&gt;</strong><%= bean.address %>
+            </div>
+            <div>
+                <em class="sat"><%= bean.star %></em>
+                <span class="price"><strong><%= bean.region_name %></strong></span>
+            </div>
+            <div class="type">排名: <%= bean.sort %></div>
+        </figcaption>
+    </figure>
+    <% })
+    }
+    %>
 
-		<figure>
-			<img src="/images/front/tour2.jpg" alt="tour2">
-			<figcaption>
-				<div class="tour_title"><strong class="title">&lt;Maldives&gt;</strong>Set off from Shanghai</div>
-			<div>
-				<em class="sat">CACSI 97%</em>
-				<span class="price">¥ <strong>8039</strong></span>
-			</div>
-			<div class="type">Oversea line</div>
-			</figcaption>
-		</figure>
-		
-        <figure>
-			<img src="/images/front/tour3.jpg" alt="tour3">
-			<figcaption>
-				<div class="tour_title"><strong class="title">&lt;Hainan
-			&gt;</strong>This item includes full cost</div>
-			
-		<div>
-			<em class="sat">CACSI 90%</em>
-			<span class="price">¥ <strong>2709</strong></span>
-		</div>
-			<div class="type">Self-service</div>
-			</figcaption>
-		</figure>
-		<figure>
-			<img src="/images/front/tour4.jpg" alt="tour4">
-			<figcaption>
-				<div class="tour_title"><strong class="title">&lt;Osaka-Tokyo&gt;</strong>Summer holiday lines
-			    </div>
-		<div>
-			<em class="sat">CACSI 97%</em>
-			<span class="price">¥ <strong>9499</strong></span>
-		</div>
-		<div class="type">Self-service</div>
-		    </figcaption>
-		</figure>
-		<figure>
-				<img src="/images/front/tour5.jpg" alt="tour5">
-				<figcaption>
-					<div class="tour_title">
-						<strong class="title">&lt;Germany 3 days tour&gt;</strong>Cover the main and popular spots
-				    </div>
-		<div>
-		   <em class="sat">CACSI 97%</em>
-			<span class="price">¥ <strong>9199</strong></span>
-		</div>
-		<div class="type">Domestic line</div>
-		</figcaption>
-		</figure>
-		<figure>
-			<img src="/images/front/tour6.jpg" alt="tour6">
-			<figcaption>
-				<div class="tour_title">
-					<strong class="title">&lt;Bali island&gt;</strong>Enjoy yourself when sailing 
-				</div>
-		<div>
-			<em class="sat">CACSI 95%</em>
-			<span class="price">¥ <strong>6488</strong></span>
-		</div>
-		<div class="type">Oversea line</div>
-		</figcaption>
-		</figure>
-		<figure>
-			<img src="/images/front/tour7.jpg" alt="tour7">
-			<figcaption>
-			<div class="tour_title"><strong class="title">&lt;Dubai and Seychelles 5 days tour
-			    &gt;</strong>Stay Dubai for 2 days and Seychelles for 3 days
-		    </div>
-		<div>
-			<em class="sat">CACSI 100%</em>
-			<span class="price">¥ <strong>9669</strong></span>
-		</div>
-		<div class="type">Cruise Tourism</div>
-		</figcaption>
-		</figure>
-		<figure>
-			<img src="/images/front/tour8.jpg" alt="tour8">
-			<figcaption>
-			<div class="tour_title">
-				<strong class="title">&lt;Romantic Turkey&gt;</strong>You can enjoy 30% discount at most if you apply now!
-			</div>
-		
-		<div>
-			<em class="sat">CACSI 93%</em>
-			<span class="price">¥ <strong>9999</strong></span>
-		</div>
-		<div class="type">Oversea line</div>
-		</figcaption>
-		</figure>
-		<figure>
-		<img src="/images/front/tour9.jpg" alt="tour9">
-		<figcaption>
-			<div class="tour_title"><strong class="title">&lt;Jiu Zhai Gou Sichuan
-		&gt;</strong>Set off from Xiamen, providing free food and accommodation 
-		    </div>
-		<div>
-			<em class="sat">CACSI 100%</em>
-			<span class="price">¥ <strong>2284</strong></span>
-		</div>
-		<div class="type">Domestic line</div>
-		</figcaption>
-		</figure>
-		</div>
-  <!-- 底部区域 -->
-	<footer id="footer">
- 	<div class="top sm-hidden">
- 		
- 		<div class="block left">
- 		    <h2>Cooperative Partner</h2>
-				<hr>
-				<ul>
-					<li>Tu Niu travel network</li>
-					<li>Zhi Xing network</li>
-					<li>Xie Chen travel network</li>
-					<li>China Youth Travel Agency</li>
-				</ul>
-		</div>
+</div>
+<!-- 底部区域 -->
+<footer id="footer">
+    <div class="top sm-hidden">
+
+        <div class="block left">
+            <h2>Cooperative Partner</h2>
+            <hr>
+            <ul>
+                <li>Tu Niu travel network</li>
+                <li>Zhi Xing network</li>
+                <li>Xie Chen travel network</li>
+                <li>China Youth Travel Agency</li>
+            </ul>
+        </div>
         <div class="block center">
             <h2>Tour Questions</h2>
-				<hr>
-				<ul>
-					<li>How to sign a travel contact?</li>
-					<li>What is the standard to dertermine prices?</li>
-					<li>What is the tour route quality?</li>
-					<li>How to gain the discount?</li>
-				</ul>
+            <hr>
+            <ul>
+                <li>How to sign a travel contact?</li>
+                <li>What is the standard to dertermine prices?</li>
+                <li>What is the tour route quality?</li>
+                <li>How to gain the discount?</li>
+            </ul>
         </div>
         <div class="block right">
-        	 <h2>Contact</h2>
-				<hr>
-				<ul>
-					<li>weibo：weibo.com</li>
-					<li>Email：10010@gmail.com</li>
-					<li>Address: Xiamen Fujian</li>
-				</ul>
+            <h2>Contact</h2>
+            <hr>
+            <ul>
+                <li>weibo：weibo.com</li>
+                <li>Email：10010@gmail.com</li>
+                <li>Address: Xiamen Fujian</li>
+            </ul>
 
         </div>
- 	</div>
- 	<!-- 分辨率大于768时，版本信息不显示，小于768时隐藏整个top，显示此信息 -->
+    </div>
+    <!-- 分辨率大于768时，版本信息不显示，小于768时隐藏整个top，显示此信息 -->
     <div class="version sm-visible">Client|Mobile|PC</div>
     <div class="bottom">
-			Copyright © Xiada Travel Agency | Number 1001 | <span class="sm-hidden">Permission Number：1002</span>
+        Copyright © Xiada Travel Agency | Number 1001 | <span class="sm-hidden">Permission Number：1002</span>
     </div>
- </footer>
+</footer>
 
 </body>
 </html>
