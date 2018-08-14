@@ -32,7 +32,7 @@ class ScenicSpotService extends BaseService {
         pageNo = pageNo < 1 ? 1 : pageNo;
         pageSize = pageSize < 10 ? 10 : pageSize;
         return new Promise(function (resovle, reject) {
-            let sql = 'select * from top_site m where 1=1';
+            let sql = 'select * from top_site m where is_deleted=N';
             if (bean && bean.siteName) {
                 sql += ' and m.site_name like \'%' + bean.siteName + '%\'';
             }
