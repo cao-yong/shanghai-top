@@ -1,0 +1,26 @@
+<header id="header">
+    <div class="center">
+        <h1 class="logo">Shanghai TOP10</h1>
+        <nav class="link">
+            <h2 class="none">website navigate</h2>
+            <ul>
+                <li><a href="/">景点</a></li>
+                <li><a href="/businessCircle">商圈<span class="xs-hidden"></span></a></li>
+                <li><a href="/ticket">小吃街<span class="xs-hidden"></span></a></li>
+                <li><a href="/scenery">酒店<span class="xs-hidden"></span></a></li>
+                <li><a href="/about"><span>夜店</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<script>
+    $(function () {
+        let index = ["/", "/businessCircle", "/ticket", "/scenery", "/about"].indexOf(window.location.pathname) + 1;
+        if (index > 0) {
+            $("#header > div > nav > ul > li:nth-child(" + index + ")").addClass("active");
+        } else {
+            $("#header > div > nav > ul > li:nth-child(1)").addClass("active");
+        }
+    });
+</script>

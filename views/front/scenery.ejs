@@ -1,140 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
-	<title>Travel Agency</title>
-	<link rel="stylesheet" href="/stylesheets/front/style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <% include commons/scripts.ejs %>
 </head>
 <body>
-<header id="header">
-	<div class="center">
-		<h1 class="logo">Travel Agency</h1>
-		<nav class="link">
-			<h2 class="none">website navigate</h2>
-			<ul>
-				<li><a href="/">景点</a></li>
-				<li><a href="/information">商圈<span class="xs-hidden"></span></a></li>
-				<li><a href="/ticket">小吃街<span class="xs-hidden"></span></a></li>
-				<li class="active"><a href="/scenery">酒店<span class="xs-hidden"></span></a></li>
-				<li><a href="/about"><span>夜店</span></a></li>
-			</ul>
-		</nav>
-	</div>
-</header>
+<!-- header -->
+<% include commons/header.ejs %>
 
- <!-- 图片上说明 -->
+<!-- 图片上说明 -->
 <div id="headline">
-	<img src="/images/front/headline.jpg" alt="">
-   	    <hgroup>
-	   	<h2>Enjoy the scenery</h2>
-	   	<h3>Various scenery figures show here...</h3>
-	   	</hgroup>
+    <img src="/images/front/headline.jpg" alt="">
+    <hgroup>
+        <h2>Enjoy the scenery</h2>
+        <h3>Various scenery figures show here...</h3>
+    </hgroup>
 </div>
 <!-- 侧栏 -->
 <div id="container">
-<!-- list区域 -->
- <h2 style="font-family:'Times New Roman'">Scenery Appreciation</h2>
-          <section class="figureArea">
-          	<div class="box">
-	          	<figure class="pic">
-					<img src="/images/front/scenery/s1.bmp" alt="曼谷-芭提雅">
-					<figcaption>曼谷[共 8 张]</figcaption>
-			    </figure>
-		    </div>
-		    <div class="box">
-			    <figure class="pic">
-					<img src="/images/front/scenery/s2.bmp" alt="马尔代夫双鱼岛">
-					<figcaption>马尔代夫[共 12 张]</figcaption>
-			    </figure>
-			</div>
-		    <div class="box">
-			    <figure class="pic">
-					<img src="/images/front/scenery/s3.bmp" alt="海南">
-					<figcaption>海南[共 19 张]</figcaption>
-				</figure>
-			 </div>
-			<div class="box">
-				<figure class="pic">
-					<img src="/images/front/scenery/s4.bmp" alt="富山-大阪-东京">
-					<figcaption>东京[共 22 张]</figcaption>
-				</figure>
-			 </div>
-			<div class="box">
-				<figure class="pic">
-					<img src="/images/front/scenery/s5.bmp" alt="法瑞意德">
-					<figcaption>德国[共 31 张]</figcaption>
-				</figure>
-			</div>
-			<div class="box">
-				<figure class="pic">
-					<img src="/images/front/scenery/s6.bmp" alt="巴厘岛">
-					<figcaption>巴厘岛[共 12 张]</figcaption>
-				</figure>
-			</div>
-			<div class="box">
-				<figure class="pic">
-					<img src="/images/front/scenery/s7.bmp" alt="塞舌尔迪拜">
-					<figcaption>塞舌尔[共 7 张]</figcaption>
-				</figure>
-			</div>
-			<div class="box">
-				<figure class="pic">
-					<img src="/images/front/scenery/s8.bmp" alt="花样土耳其">
-					<figcaption>土耳其[共 14 张]</figcaption>
-				</figure>
-			</div>
-			<div class="box">
-				<figure class="pic">
-					<img src="/images/front/scenery/s9.bmp" alt="九寨沟">
-					<figcaption>九寨沟[共 8 张]</figcaption>
-				</figure>
-			</div>
-          </section>
+    <!-- list区域 -->
+    <h2 style="font-family:'Times New Roman'">Scenery Appreciation</h2>
+    <section class="figureArea">
+        <div class="box">
+            <figure class="pic">
+                <img src="/images/front/scenery/s1.bmp" alt="曼谷-芭提雅">
+                <figcaption>曼谷[共 8 张]</figcaption>
+            </figure>
+        </div>
+        <div class="box">
+            <figure class="pic">
+                <img src="/images/front/scenery/s2.bmp" alt="马尔代夫双鱼岛">
+                <figcaption>马尔代夫[共 12 张]</figcaption>
+            </figure>
+        </div>
+        <div class="box">
+            <figure class="pic">
+                <img src="/images/front/scenery/s3.bmp" alt="海南">
+                <figcaption>海南[共 19 张]</figcaption>
+            </figure>
+        </div>
+        <div class="box">
+            <figure class="pic">
+                <img src="/images/front/scenery/s4.bmp" alt="富山-大阪-东京">
+                <figcaption>东京[共 22 张]</figcaption>
+            </figure>
+        </div>
+        <div class="box">
+            <figure class="pic">
+                <img src="/images/front/scenery/s5.bmp" alt="法瑞意德">
+                <figcaption>德国[共 31 张]</figcaption>
+            </figure>
+        </div>
+        <div class="box">
+            <figure class="pic">
+                <img src="/images/front/scenery/s6.bmp" alt="巴厘岛">
+                <figcaption>巴厘岛[共 12 张]</figcaption>
+            </figure>
+        </div>
+        <div class="box">
+            <figure class="pic">
+                <img src="/images/front/scenery/s7.bmp" alt="塞舌尔迪拜">
+                <figcaption>塞舌尔[共 7 张]</figcaption>
+            </figure>
+        </div>
+        <div class="box">
+            <figure class="pic">
+                <img src="/images/front/scenery/s8.bmp" alt="花样土耳其">
+                <figcaption>土耳其[共 14 张]</figcaption>
+            </figure>
+        </div>
+        <div class="box">
+            <figure class="pic">
+                <img src="/images/front/scenery/s9.bmp" alt="九寨沟">
+                <figcaption>九寨沟[共 8 张]</figcaption>
+            </figure>
+        </div>
+    </section>
 </div>
 <div class="clear"></div>
-  <!-- 底部区域 -->
-	<footer id="footer">
- 	<div class="top sm-hidden">
- 		
- 		<div class="block left">
- 		    <h2>Cooperative Partner</h2>
-				<hr>
-				<ul>
-					<li>Tu Niu travel network</li>
-					<li>Zhi Xing network</li>
-					<li>Xie Chen travel network</li>
-					<li>China Youth Travel Agency</li>
-				</ul>
-		</div>
-        <div class="block center">
-            <h2>Tour Questions</h2>
-				<hr>
-				<ul>
-					<li>How to sign a travel contact?</li>
-					<li>What is the standard to dertermine prices?</li>
-					<li>What is the tour route quality?</li>
-					<li>How to gain the discount?</li>
-				</ul>
-        </div>
-        <div class="block right">
-        	 <h2>Contact</h2>
-				<hr>
-				<ul>
-					<li>weibo：weibo.com</li>
-					<li>Email：10010@gmail.com</li>
-					<li>Address: Xiamen Fujian</li>
-				</ul>
-
-        </div>
- 	</div>
- 	<!-- 分辨率大于768时，版本信息不显示，小于768时隐藏整个top，显示此信息 -->
-    <div class="version sm-visible">Client|Mobile|PC</div>
-    <div class="bottom">
-			Copyright © Xiada Travel Agency | Number 1001 | <span class="sm-hidden">Permission:1002</span>
-    </div>
- </footer>
- 	<script src="../../public/javascripts/front/scenery.js"></script>
+<!-- 底部区域 -->
+<% include commons/footer.ejs %>
+<script src="/javascripts/front/scenery.js"></script>
 </body>
 </html>

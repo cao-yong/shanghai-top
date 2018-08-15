@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <% include commons/scripts.ejs %>
+</head>
+<body>
+<!-- header -->
+<% include commons/header.ejs %>
+
+<!-- 图片上说明 -->
+<div id="headline">
+    <img src="/images/front/headline.jpg" alt="">
+    <hgroup>
+        <h2>上海商圈</h2>
+        <h3>每一座城市都有一个最繁华、最吸引人的商圈，那里人流聚集，热闹非凡，集美食、玩耍、购物、娱乐于一体。上海是最繁华的都市之一，这里是上海最有人气的商圈排名。</h3>
+    </hgroup>
+</div>
+<!-- 侧栏 -->
+<div id="container">
+    <aside class="sidebar">
+        <div class="sidebox recommend">
+            <h2>商圈推荐</h2>
+            <div class="tag">
+                <ul>
+                    <% if(topSite) {
+                    topSite.forEach(function (site) { %>
+                    <li><a href="javascript:void(0)"><%= site.site_name %></a></li>
+                    <% })
+                    }
+                    %>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebox hot">
+            <h2>热门商圈</h2>
+            <div class="figure">
+                <% if(page.tops) {
+                page.tops.forEach(function (top) { %>
+                <figure>
+                    <img style="width:150px;height: 120px" src="<%= top.img_url %>" alt="<%= top.region_name %>">
+                    <figcaption><%= top.site_name %></figcaption>
+                </figure>
+                <% })
+                }
+                %>
+            </div>
+        </div>
+
+        <div class="sidebox treasure">
+            <h2>百宝箱</h2>
+            <div class="box">
+                <a href="###" class="trea1">天气预报</a>
+                <a href="###" class="trea2">火车票查询</a>
+                <a href="###" class="trea3">航空查询</a>
+                <a href="###" class="trea4">地铁线路查询</a>
+            </div>
+        </div>
+    </aside>
+
+    <div class="list information">
+        <h2>旅游资讯</h2>
+        <% if(page.rows) {
+        page.rows.forEach(function (row) { %>
+        <figure class="tour">
+            <img style="width:567px;height: 340px" src="<%= row.img_url %>" alt="<%= row.region_name %>">
+            <figcaption>
+                <article>
+                    <!-- 头部 -->
+                    <header>
+                        <hgroup>
+                            <h2><%= row.site_name %></h2>
+                            <h3><%= row.address %></h3>
+                        </hgroup>
+                    </header>
+                    <!-- 中间内容 -->
+                    <ol class="md-hidden">
+                        <li>
+                            <mark>星级</mark>
+                            <%= row.star %>
+                        </li>
+                        <li>
+                            <mark>区域</mark>
+                            <%= row.region_name %>
+                        </li>
+                    </ol>
+                    <div class="buy">
+                        <div class="price"><strong><%= row.category_name %></strong></div>
+                        <div class="reserve md-hidden"><a href="###">立即查看</a></div>
+                    </div>
+                    <div class="type">排名：<%= row.sort %></div>
+                    <div class="disc xs-hidden"><span>推荐</span>
+                    </div>
+
+                    <!-- 图片说明文字底部 -->
+                    <footer class="md-hidden">
+                        本排名最后更新时间：
+                        <time><%= row.update_time %></time>
+                    </footer>
+                </article>
+            </figcaption>
+        </figure>
+        <% })
+        }
+        %>
+        <div class="more" val="<%= page.pageNo %>">加载更多...</div>
+    </div>
+</div>
+
+<!-- 底部区域 -->
+<% include commons/footer.ejs %>
+<script src="/javascripts/front/businessCircle.js"></script>
+</body>
+</html>
