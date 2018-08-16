@@ -1,7 +1,7 @@
 //加载更多
 $("#container > div").on("click",".more",function () {
     let pageNo = parseInt($(this).attr("val")) + 1;
-    $(this).hide();
+    $(this).remove();
     $.ajax({
         url: "/users/findMore",
         type: "GET",

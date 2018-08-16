@@ -5,10 +5,10 @@
             <h2 class="none">website navigate</h2>
             <ul>
                 <li><a href="/">景点</a></li>
-                <li><a href="/businessCircle">商圈<span class="xs-hidden"></span></a></li>
-                <li><a href="/ticket">小吃街<span class="xs-hidden"></span></a></li>
-                <li><a href="/scenery">酒店<span class="xs-hidden"></span></a></li>
-                <li><a href="/about"><span>夜店</span></a></li>
+                <li><a href="/topSites?categoryType=2">商圈<span class="xs-hidden"></span></a></li>
+                <li><a href="/topSites?categoryType=3">小吃街<span class="xs-hidden"></span></a></li>
+                <li><a href="/topSites?categoryType=4">酒店<span class="xs-hidden"></span></a></li>
+                <li><a href="/topSites?categoryType=5"><span>夜店</span></a></li>
             </ul>
         </nav>
     </div>
@@ -16,8 +16,9 @@
 
 <script>
     $(function () {
-        let index = ["/", "/businessCircle", "/ticket", "/scenery", "/about"].indexOf(window.location.pathname) + 1;
-        if (index > 0) {
+        let params = window.location.search;
+        if (params.indexOf("categoryType=") !== -1) {
+            let index = parseInt(params.split("categoryType=")[1]);
             $("#header > div > nav > ul > li:nth-child(" + index + ")").addClass("active");
         } else {
             $("#header > div > nav > ul > li:nth-child(1)").addClass("active");

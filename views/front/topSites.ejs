@@ -11,17 +11,17 @@
 
 <!-- 图片上说明 -->
 <div id="headline">
-    <img src="/images/front/headline.jpg" alt="">
+    <img src="/images/front/<%= page.headline_img %>" alt="">
     <hgroup>
-        <h2>上海商圈</h2>
-        <h3>每一座城市都有一个最繁华、最吸引人的商圈，那里人流聚集，热闹非凡，集美食、玩耍、购物、娱乐于一体。上海是最繁华的都市之一，这里是上海最有人气的商圈排名。</h3>
+        <h2>上海<%= page.siteType %></h2>
+        <h3><%= page.siteDesc %></h3>
     </hgroup>
 </div>
 <!-- 侧栏 -->
 <div id="container">
     <aside class="sidebar">
         <div class="sidebox recommend">
-            <h2>商圈推荐</h2>
+            <h2><%= page.siteType %>推荐</h2>
             <div class="tag">
                 <ul>
                     <% if(topSite) {
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="sidebox hot">
-            <h2>热门商圈</h2>
+            <h2>热门<%= page.siteType %></h2>
             <div class="figure">
                 <% if(page.tops) {
                 page.tops.forEach(function (top) { %>
@@ -60,7 +60,7 @@
     </aside>
 
     <div class="list information">
-        <h2>旅游资讯</h2>
+        <h2><%= page.siteType %>资讯</h2>
         <% if(page.rows) {
         page.rows.forEach(function (row) { %>
         <figure class="tour">
@@ -110,6 +110,6 @@
 
 <!-- 底部区域 -->
 <% include commons/footer.ejs %>
-<script src="/javascripts/front/businessCircle.js"></script>
+<script src="/javascripts/front/loadingMore.js"></script>
 </body>
 </html>
