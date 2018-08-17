@@ -47,6 +47,7 @@ router.get('/topSites', function (req, res, next) {
         pageNo: pageNo,
         pageSize: pageSize,
         prePage: (pageNo - 1) <= 0 ? 1 : pageNo - 1,
+        categoryType: categoryType
     };
     let categoryTypes = ["景点", "商圈", "小吃街", "酒店", "夜店"];
     let images = ["businessCircle.jpg", "snackStreet.jpg", "hotel.jpg", "nightClub.jpg"];
@@ -63,9 +64,12 @@ router.get('/topSites', function (req, res, next) {
         page.totalCount = count;
         page.totalPage = (count / pageSize) === 0 ? count / pageSize : Math.floor(count / pageSize) + 1;
         page.nextPage = (pageNo + 1) > page.totalPage ? page.totalPage : pageNo + 1;
-        return scenicSpotService.findPage(bean, pageNo, pageSize)
+        return scenicSpotService.findPage(bean, pageNo, pageSize);
     }).then(result => {
         result.forEach((item, index) => {
+            if (item.star.indexOf("商户")) {
+                item.star = item.star.replace("商户", "");
+            }
             item.update_time = moment(item.update_time).format('YYYY-MM-DD HH:mm:ss');
         });
         page.rows = result;

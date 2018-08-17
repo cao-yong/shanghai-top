@@ -1,12 +1,13 @@
 //加载更多
 $("#container > div").on("click",".more",function () {
-    let pageNo = parseInt($(this).attr("val")) + 1;
+    let pageNo = parseInt($(this).attr("pageNo")) + 1;
+    let categoryType = parseInt($(this).attr("categoryType"));
     $(this).remove();
     $.ajax({
         url: "/users/findMore",
         type: "GET",
         dataType: "JSON",
-        data: {pageNo: pageNo},
+        data: {pageNo: pageNo, categoryType: categoryType},
         success: function (result) {
             if (result.rows) {
                 let html = '';
@@ -33,7 +34,7 @@ $("#container > div").on("click",".more",function () {
                                             '</li>' +
                                             '</ol>' +
                                             '<div class="buy">' +
-                                            '<div class="price"><strong>商圈</strong></div>' +
+                                            '<div class="price"><strong>'+item.category_name+'</strong></div>' +
                                             '<div class="reserve md-hidden"><a href="###">立即查看</a></div>' +
                                             '</div>' +
                                             '<div class="type">排名：'+item.sort+'</div>' +
@@ -48,7 +49,11 @@ $("#container > div").on("click",".more",function () {
                                 '</figure>';
 
                 });
-                html += '<div class="more" val="'+result.pageNo+'">加载更多...</div>';
+                if(result.hasNext){
+                    html += '<div class="more" categoryType="'+result.categoryType+'" pageNo="'+result.pageNo+'">加载更多...</div>';
+                }else{
+                    html += '<div class="no-more">没有更多啦~</div>';
+                }
                 //加载更多
                 $("#container > div").append(html);
             }

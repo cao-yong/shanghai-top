@@ -40,18 +40,21 @@ router.get('/findMore', function (req, res, next) {
     //查询商圈数据
     let pageNo = req.query.pageNo || 2;
     let pageSize = req.query.pageSize || 4;
+    let categoryType = req.query.categoryType;
     let bean = {
-        categoryType: 2
+        categoryType: categoryType
     };
     let page = {
         pageNo: pageNo,
         pageSize: pageSize,
         prePage: (pageNo - 1) <= 0 ? 1 : pageNo - 1,
+        categoryType: categoryType
     };
     scenicSpotService.count(bean).then(count => {
         page.totalCount = count;
         page.totalPage = (count / pageSize) === 0 ? count / pageSize : Math.floor(count / pageSize) + 1;
         page.nextPage = (pageNo + 1) > page.totalPage ? page.totalPage : pageNo + 1;
+        page.hasNext = pageNo < page.totalPage;
         return scenicSpotService.findPage(bean, pageNo, pageSize)
     }).then(result => {
         result.forEach((item, index) => {

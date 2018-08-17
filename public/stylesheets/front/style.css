@@ -483,6 +483,18 @@ div,figure,figcaption{
     /*清除more的浮动*/
     clear:both;
 }
+#container .no-more{
+	width:200px;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	border-radius:10px;
+	margin:0 auto;
+	font-size:20px;
+	color:#333;
+	/*清除no-more的浮动*/
+	clear:both;
+}
  /*ticket.html的CSS设置*/
  #container .ticket{
 	font-size:20px;
