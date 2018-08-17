@@ -58,6 +58,9 @@ router.get('/findMore', function (req, res, next) {
         return scenicSpotService.findPage(bean, pageNo, pageSize)
     }).then(result => {
         result.forEach((item, index) => {
+            if (item.star.indexOf("商户")) {
+                item.star = item.star.replace("商户", "");
+            }
             item.update_time = moment(item.update_time).format('YYYY-MM-DD HH:mm:ss');
         });
         page.rows = result;
