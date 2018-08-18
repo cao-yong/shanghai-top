@@ -890,11 +890,22 @@ div, figure, figcaption {
 /*-----媒体查询，参考部分 Bootstrap 框架-----*/
 
 /*当页面大于 1200px 时，大屏幕，主要是 PC 端*/
-@media (min-width: 1200px) {
+@media (min-width: 1366px) {
     /*这是将采用最初设置样式*/
 }
 
-/*在 992 和 1199 像素之间的屏幕里，中等屏幕，分辨率低的 PC*/
+/*在 1200 和 1366 像素之间的屏幕里，中等屏幕，分辨率一般的 PC*/
+@media (min-width: 1200px)and (max-width: 1366px) {
+    /*把右侧边栏变成两排 隐藏最近一个*/
+    #container .sidebox li:nth-last-child(1){
+        display: none;
+    }
+    #container .tag li {
+        width: 49%;
+    }
+}
+
+/*在 992 和 1199 像素之间的屏幕里，中低等屏幕，分辨率低的 PC*/
 @media (min-width: 992px) and (max-width: 1200px) {
 
     #adver .search, #adver .button {
