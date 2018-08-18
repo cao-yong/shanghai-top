@@ -3,7 +3,7 @@
 sharing the most top stuff of Shanghai in this site.
 
 http://www.caoyong.top
-###启动脚本：
+### 启动脚本：
 ```shell
 APP_NAME='shanghai-top'
 command='nohup npm run start'
