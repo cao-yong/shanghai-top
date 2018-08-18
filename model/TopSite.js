@@ -127,6 +127,16 @@ module.exports = orm.accountdb.define('top_site', {
         set: function (val) {
             this.setDataValue('createTime', val);
         }
+    }, updateTime: {
+        field: 'update_time',
+        type: orm.Sequelize.DATE,
+        allowNull: false,
+        get: function () {
+            return this.getDataValue('updateTime');
+        },
+        set: function (val) {
+            this.setDataValue('updateTime', val);
+        }
     }
 }, {
     freezeTableName: true,

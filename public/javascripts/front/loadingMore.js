@@ -13,12 +13,12 @@ $("#container > div").on("click",".more",function () {
                 let html = '';
                 result.rows.forEach(function (item, index) {
                     html+= '<figure class="tour">' +
-                                '<img style="width:567px;height: 340px" src="'+ item.img_url+'" alt="'+item.region_name+'">' +
+                                '<img style="width:567px;height: 340px" src="'+ item.imgUrl+'" alt="'+item.regionName+'">' +
                                     '<figcaption>' +
                                         '<article>' +
                                             '<header>' +
                                                 '<hgroup>' +
-                                                '<h2>'+item.site_name+'</h2>' +
+                                                '<h2>'+item.siteName+'</h2>' +
                                                 '<h3>'+item.address+'</h3>' +
                                             '</hgroup>' +
                                             '</header>' +
@@ -30,11 +30,11 @@ $("#container > div").on("click",".more",function () {
                                             '</li>' +
                                             '<li>' +
                                             '<mark>区域</mark>' +
-                                            item.region_name +
+                                            item.regionName +
                                             '</li>' +
                                             '</ol>' +
                                             '<div class="buy">' +
-                                            '<div class="price"><strong>'+item.category_name+'</strong></div>' +
+                                            '<div class="price"><strong>'+item.categoryName+'</strong></div>' +
                                             '<div class="reserve md-hidden"><a href="###">立即查看</a></div>' +
                                             '</div>' +
                                             '<div class="type">排名：'+item.sort+'</div>' +
@@ -42,7 +42,7 @@ $("#container > div").on("click",".more",function () {
                                             '</div>' +
                                             '<footer class="md-hidden">' +
                                                 '本排名最后更新时间：' +
-                                                '<time>'+item.update_time+'</time>' +
+                                                '<time>'+item.updateTime+'</time>' +
                                             '</footer>' +
                                         '</article>' +
                                     '</figcaption>' +

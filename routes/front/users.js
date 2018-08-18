@@ -61,7 +61,7 @@ router.get('/findMore', function (req, res, next) {
             if (item.star.indexOf("商户")) {
                 item.star = item.star.replace("商户", "");
             }
-            item.update_time = moment(item.update_time).format('YYYY-MM-DD HH:mm:ss');
+            item.updateTime = moment(item.updateTime).format('YYYY-MM-DD HH:mm:ss');
         });
         page.rows = result;
         return res.jsonp(page)

@@ -11,7 +11,7 @@
 
 <!-- 图片上说明 -->
 <div id="headline">
-    <img src="/images/front/<%= page.headline_img %>" alt="">
+    <img src="/images/front/<%= page.headlineImg %>" alt="">
     <hgroup>
         <h2>上海<%= page.siteType %></h2>
         <h3><%- page.siteDesc %></h3>
@@ -39,8 +39,8 @@
                 <% if(page.tops) {
                 page.tops.forEach(function (top) { %>
                 <figure>
-                    <img style="width:150px;height: 120px" src="<%= top.img_url %>" alt="<%= top.region_name %>">
-                    <figcaption><%= top.site_name %></figcaption>
+                    <img style="width:150px;height: 120px" src="<%= top.imgUrl %>" alt="<%= top.regionName %>">
+                    <figcaption><%= top.siteName %></figcaption>
                 </figure>
                 <% })
                 }
@@ -64,13 +64,13 @@
         <% if(page.rows) {
         page.rows.forEach(function (row) { %>
         <figure class="tour">
-            <img style="width:567px;height: 340px" src="<%= row.img_url %>" alt="<%= row.region_name %>">
+            <img style="width:567px;height: 340px" src="<%= row.imgUrl %>" alt="<%= row.regionName %>">
             <figcaption>
                 <article>
                     <!-- 头部 -->
                     <header>
                         <hgroup>
-                            <h2><%= row.site_name %></h2>
+                            <h2><%= row.siteName %></h2>
                             <h3><%= row.address %></h3>
                         </hgroup>
                     </header>
@@ -82,11 +82,11 @@
                         </li>
                         <li>
                             <mark>区域</mark>
-                            <%= row.region_name %>
+                            <%= row.regionName %>
                         </li>
                     </ol>
                     <div class="buy">
-                        <div class="price"><strong><%= row.category_name %></strong></div>
+                        <div class="price"><strong><%= row.categoryName %></strong></div>
                         <div class="reserve md-hidden"><a href="javascript:void(0)">立即查看</a></div>
                     </div>
                     <div class="type">排名：<%= row.sort %></div>
@@ -96,7 +96,7 @@
                     <!-- 图片说明文字底部 -->
                     <footer class="md-hidden">
                         本排名最后更新时间：
-                        <time><%= row.update_time %></time>
+                        <time><%= row.updateTime %></time>
                     </footer>
                 </article>
             </figcaption>

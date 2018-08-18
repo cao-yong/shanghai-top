@@ -59,7 +59,7 @@ router.get('/topSites', function (req, res, next) {
     ];
     page.siteType = categoryTypes[categoryType - 1];
     page.siteDesc = siteDesc[categoryType - 2];
-    page.headline_img = images[categoryType - 2];
+    page.headlineImg = images[categoryType - 2];
     scenicSpotService.count(bean).then(count => {
         page.totalCount = count;
         page.totalPage = (count / pageSize) === 0 ? count / pageSize : Math.floor(count / pageSize) + 1;
@@ -70,7 +70,7 @@ router.get('/topSites', function (req, res, next) {
             if (item.star.indexOf("商户")) {
                 item.star = item.star.replace("商户", "");
             }
-            item.update_time = moment(item.update_time).format('YYYY-MM-DD HH:mm:ss');
+            item.updateTime = moment(item.updateTime).format('YYYY-MM-DD HH:mm:ss');
         });
         page.rows = result;
         return scenicSpotService.findPage(bean, 1, 8)

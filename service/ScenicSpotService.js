@@ -32,18 +32,24 @@ class ScenicSpotService extends BaseService {
         pageNo = pageNo < 1 ? 1 : pageNo;
         pageSize = pageSize < 4 ? 4 : pageSize;
         return new Promise(function (resovle, reject) {
-            let sql = 'select * from top_site m where is_deleted=\'N\'';
-            if (bean && bean.siteName) {
-                let siteName = bean.siteName.replace(/(^\s*)|(\s*$)/g,"");
-                sql += ' and m.site_name like \'%' + siteName + '%\'';
-            }
+            let siteName;
+            let where = {};
+            where.is_deleted = 'N';
             if (bean && bean.categoryType) {
-                sql += ' and m.category_type =' + bean.categoryType;
+                where.category_type = bean.categoryType;
             }
-            sql += ' order by m.sort';
-            sql += ' limit ' + ((pageNo - 1) * pageSize) + ',';
-            sql += pageSize;
-            orm.accountdb.query(sql, {type: orm.Sequelize.QueryTypes.SELECT}).then(result => {
+            if (bean && bean.siteName) {
+                siteName = bean.siteName.replace(/(^\s*)|(\s*$)/g, "");
+                where.site_name = {
+                    like: '%' + siteName + '%',
+                }
+            }
+            topSizte.findAll({
+                where: where,
+                offset: ((pageNo - 1) * pageSize),
+                limit: pageSize,
+                order: 'sort'
+            }).then(result => {
                 resovle(result);
             }).catch(ex => {
                 console.error(ex);
@@ -51,6 +57,7 @@ class ScenicSpotService extends BaseService {
             });
         });
     }
+
     // 统计
     count(bean) {
         return new Promise(function (resovle, reject) {

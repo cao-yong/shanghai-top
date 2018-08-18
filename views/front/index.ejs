@@ -31,14 +31,14 @@
     <% if(data) {
     data.forEach(function (bean) { %>
     <figure>
-        <img style="width:607px;height: 346px" src="<%= bean.img_url %>" alt="tour1">
+        <img style="width:607px;height: 346px" src="<%= bean.imgUrl %>" alt="tour1">
         <figcaption>
             <div class="tour_title">
-                <strong class="title">&lt;<%= bean.region_name %>&gt;</strong><%= bean.address %>
+                <strong class="title">&lt;<%= bean.regionName %>&gt;</strong><%= bean.address %>
             </div>
             <div>
                 <em class="sat"><%= bean.star %></em>
-                <span class="price"><strong><%= bean.site_name %></strong></span>
+                <span class="price"><strong><%= bean.siteName %></strong></span>
             </div>
             <div class="type">排名: <%= bean.sort %></div>
         </figcaption>
