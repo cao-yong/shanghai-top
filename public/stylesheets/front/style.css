@@ -1193,7 +1193,7 @@ div, figure, figcaption {
     }
 
     /*像素较小时，将导航栏的部分文字和logo隐藏*/
-    #header .logo, #header .xs-hidden, #header ul li:last-child, #footer .sm-hidden, #container .sidebar, #container .xs-hidden {
+    #header .logo, #header .xs-hidden, #footer .sm-hidden, #container .sidebar, #container .xs-hidden {
         display: none;
     }
 
@@ -1204,7 +1204,7 @@ div, figure, figcaption {
     }
 
     #header .link li {
-        width: 25%;
+        width: 20%;
     }
 
     #adver {
