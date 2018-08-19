@@ -26,7 +26,7 @@
                 <ul>
                     <% if(topSite) {
                     topSite.forEach(function (site) { %>
-                    <li><a href="javascript:void(0)"><%= site.site_name %></a></li>
+                    <li><a href="javascript:void(0)"><%= site.get('site_name') %></a></li>
                     <% })
                     }
                     %>

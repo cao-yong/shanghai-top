@@ -44,7 +44,7 @@ class ScenicSpotService extends BaseService {
                     like: '%' + siteName + '%',
                 }
             }
-            topSizte.findAll({
+            topSizte.findAndCountAll({
                 where: where,
                 offset: ((pageNo - 1) * pageSize),
                 limit: pageSize,
@@ -58,38 +58,23 @@ class ScenicSpotService extends BaseService {
         });
     }
 
-    // 统计
-    count(bean) {
-        return new Promise(function (resovle, reject) {
-            let sql = 'select count(1) count from top_site m where is_deleted=\'N\'';
-            if (bean && bean.siteName) {
-                sql += ' and m.site_name like \'%' + bean.siteName + '%\'';
-            }
-            if (bean && bean.categoryType) {
-                sql += ' and m.category_type =' + bean.categoryType;
-            }
-            orm.accountdb.query(sql, {type: orm.Sequelize.QueryTypes.SELECT}).then(result => {
-                resovle(result[0].count);
-            }).catch(ex => {
-                console.error(ex);
-                reject(ex);
-            });
-        });
-    }
-
     //查询推荐地点集合
     findTopSiteList(bean, pageNo, pageSize) {
         pageNo = pageNo < 1 ? 1 : pageNo;
         pageSize = pageSize < 10 ? 10 : pageSize;
         return new Promise(function (resovle, reject) {
-            let sql = 'select site_name from top_site m where is_deleted=\'N\'';
+            let where = {};
+            where.is_deleted = 'N';
             if (bean && bean.categoryType) {
-                sql += ' and m.category_type =' + bean.categoryType;
+                where.category_type = bean.categoryType;
             }
-            sql += ' order by m.sort';
-            sql += ' limit ' + ((pageNo - 1) * pageSize) + ',';
-            sql += pageSize;
-            orm.accountdb.query(sql, {type: orm.Sequelize.QueryTypes.SELECT}).then(result => {
+            topSizte.findAll({
+                where: where,
+                attributes: ['site_name'],
+                offset: ((pageNo - 1) * pageSize),
+                limit: pageSize,
+                order: 'sort'
+            }).then(result => {
                 resovle(result);
             }).catch(ex => {
                 console.error(ex);

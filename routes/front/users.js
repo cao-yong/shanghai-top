@@ -22,11 +22,13 @@ router.get('/search', function (req, res, next) {
         siteName: siteName,
         prePage: (pageNo - 1) <= 0 ? 1 : pageNo - 1,
     };
-    scenicSpotService.count(bean).then(count => {
-        page.totalCount = count;
-        page.totalPage = (count / pageSize) === 0 ? count / pageSize : Math.floor(count / pageSize) + 1;
+    scenicSpotService.findPage(bean, pageNo, pageSize).then(result => {
+        page.totalCount = result.count;
+        page.totalPage = (result.count / pageSize) === 0 ? result.count / pageSize : Math.floor(result.count / pageSize) + 1;
         page.nextPage = (pageNo + 1) > page.totalPage ? page.totalPage : pageNo + 1;
-        return scenicSpotService.findPage(bean, pageNo, pageSize)
+        res.locals.data = result.rows;
+        res.locals.page = page;
+        res.render('front/index');
     }).then(result => {
         res.locals.data = result;
         res.locals.page = page;
@@ -50,20 +52,18 @@ router.get('/findMore', function (req, res, next) {
         prePage: (pageNo - 1) <= 0 ? 1 : pageNo - 1,
         categoryType: categoryType
     };
-    scenicSpotService.count(bean).then(count => {
-        page.totalCount = count;
-        page.totalPage = (count / pageSize) === 0 ? count / pageSize : Math.floor(count / pageSize) + 1;
+    scenicSpotService.findPage(bean, pageNo, pageSize).then(result => {
+        page.totalCount = result.count;
+        page.totalPage = (result.count / pageSize) === 0 ? result.count / pageSize : Math.floor(result.count / pageSize) + 1;
         page.nextPage = (pageNo + 1) > page.totalPage ? page.totalPage : pageNo + 1;
         page.hasNext = pageNo < page.totalPage;
-        return scenicSpotService.findPage(bean, pageNo, pageSize)
-    }).then(result => {
-        result.forEach((item, index) => {
+        result.rows.forEach((item, index) => {
             if (item.star.indexOf("商户")) {
                 item.star = item.star.replace("商户", "");
             }
             item.updateTime = moment(item.updateTime).format('YYYY-MM-DD HH:mm:ss');
         });
-        page.rows = result;
+        page.rows = result.rows;
         return res.jsonp(page)
     }).catch(ex => {
         console.error(ex);

@@ -21,13 +21,11 @@ router.get('/', function (req, res, next) {
         siteName: siteName,
         prePage: (pageNo - 1) <= 0 ? 1 : pageNo - 1,
     };
-    scenicSpotService.count(bean).then(count => {
-        page.totalCount = count;
-        page.totalPage = (count / pageSize) === 0 ? count / pageSize : Math.floor(count / pageSize) + 1;
+    scenicSpotService.findPage(bean, pageNo, pageSize).then(result => {
+        page.totalCount = result.count;
+        page.totalPage = (result.count / pageSize) === 0 ? result.count / pageSize : Math.floor(result.count / pageSize) + 1;
         page.nextPage = (pageNo + 1) > page.totalPage ? page.totalPage : pageNo + 1;
-        return scenicSpotService.findPage(bean, pageNo, pageSize)
-    }).then(result => {
-        res.locals.data = result;
+        res.locals.data = result.rows;
         res.locals.page = page;
         res.render('front/index');
     }).catch(ex => {
@@ -60,27 +58,25 @@ router.get('/topSites', function (req, res, next) {
     page.siteType = categoryTypes[categoryType - 1];
     page.siteDesc = siteDesc[categoryType - 2];
     page.headlineImg = images[categoryType - 2];
-    scenicSpotService.count(bean).then(count => {
-        page.totalCount = count;
-        page.totalPage = (count / pageSize) === 0 ? count / pageSize : Math.floor(count / pageSize) + 1;
+    scenicSpotService.findPage(bean, pageNo, pageSize).then(result => {
+        page.totalCount = result.count;
+        page.totalPage = (result.count / pageSize) === 0 ? result.count / pageSize : Math.floor(result.count / pageSize) + 1;
         page.nextPage = (pageNo + 1) > page.totalPage ? page.totalPage : pageNo + 1;
-        return scenicSpotService.findPage(bean, pageNo, pageSize);
-    }).then(result => {
-        result.forEach((item, index) => {
+        result.rows.forEach((item, index) => {
             if (item.star.indexOf("商户")) {
                 item.star = item.star.replace("商户", "");
             }
             item.updateTime = moment(item.updateTime).format('YYYY-MM-DD HH:mm:ss');
         });
-        page.rows = result;
+        page.rows = result.rows;
         return scenicSpotService.findPage(bean, 1, 8)
     }).then(result => {
-        page.tops = result;
+        page.tops = result.rows;
         return scenicSpotService.findTopSiteList(bean, 1, 21)
     }).then(result => {
         result.forEach((item, index) => {
-            if (item.site_name.length > 10) {
-                item.site_name = item.site_name.substring(0, 10);
+            if (item.get('site_name').length > 10) {
+                item.setDataValue('site_name', item.get('site_name').substring(0, 10));
             }
         });
         res.locals.topSite = result;
